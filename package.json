@@ -2,9 +2,13 @@
 	"name": "@uploadfast/js",
 	"version": "0.0.1",
 	"description": "",
-	"main": "index.js",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsup index.ts --format cjs,esm --dts",
+		"lint": "tsc"
 	},
 	"keywords": [],
 	"author": "",
@@ -13,6 +17,7 @@
 		"typescript": "^5.4.5"
 	},
 	"dependencies": {
+		"@changesets/cli": "^2.27.1",
 		"tsup": "^8.0.2"
 	}
 }
