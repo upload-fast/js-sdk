@@ -3,7 +3,7 @@ import { ApiResponse, UploadResponse } from './types'
 import axios, { AxiosResponse, ResponseType } from 'axios'
 
 export class UploadFast {
-	private serverUrl = 'http://localhost:3000'
+	private serverUrl = 'https://uploadfast-server.fly.dev'
 	private apiKey: string
 
 	constructor({ publicKey }: { publicKey: string }) {
