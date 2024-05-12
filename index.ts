@@ -6,8 +6,11 @@ export class UploadFast {
 	private serverUrl = 'https://uploadfast-server.fly.dev'
 	private apiKey: string
 
-	constructor({ publicKey }: { publicKey: string }) {
-		this.apiKey = publicKey
+	constructor({ apiKey }: { apiKey: string }) {
+		if (!apiKey) {
+			throw new Error('Api key required')
+		}
+		this.apiKey = apiKey
 	}
 
 	public async upload({ file }: { file: File }): ReturnType<() => Promise<UploadResponse>> {
@@ -59,4 +62,8 @@ export class UploadFast {
 			throw new Error(`An error occured during file upload: ${error.message}`)
 		}
 	}
+}
+
+export const createClient = ({ apiKey }: { apiKey: string }) => {
+	return new UploadFast({ apiKey })
 }

@@ -1,13 +1,13 @@
 import 'dotenv/config'
 
-import { UploadFast } from './index'
+import { UploadFast, createClient } from './index'
 
 import { describe, it, expect } from '@jest/globals'
 
 describe('JavaScript SDK', () => {
 	//@ts-ignore
 	const apiKey = process.env.API_KEY!
-	const uploadfast = new UploadFast({ publicKey: apiKey })
+	const uploadfast = createClient({ apiKey })
 	let uploadedFileUrl: string
 
 	it('should create an instance of the SDK', () => {
