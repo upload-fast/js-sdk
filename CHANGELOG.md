@@ -1,5 +1,11 @@
 # @uploadfast/client
 
+## 0.0.14
+
+### Patch Changes
+
+- switched back to fetch api
+
 ## 0.0.13
 
 ### Patch Changes
