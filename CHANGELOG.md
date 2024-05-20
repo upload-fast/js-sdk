@@ -1,5 +1,17 @@
 # @uploadfast/client
 
+## 0.0.13
+
+### Patch Changes
+
+- Upload method bug
+
+## 0.0.7
+
+### Patch Changes
+
+- Patched upload method
+
 ## 0.0.5
 
 ### Patch Changes

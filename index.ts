@@ -1,6 +1,5 @@
 import { UF_Error } from './error'
 import { ApiResponse, UploadResponse } from './types'
-import axios, { AxiosResponse, ResponseType } from 'axios'
 
 export class UploadFast {
 	private serverUrl = 'https://uploadfast-server.fly.dev'
@@ -14,31 +13,36 @@ export class UploadFast {
 	}
 
 	public async upload({ file }: { file: File }): ReturnType<() => Promise<UploadResponse>> {
-		if (!File) {
+		if (!file) {
 			throw new UF_Error(404)
 		}
 		try {
 			const formData = new FormData()
 			formData.append('file', file)
 
-			const uploadResult: ApiResponse<UploadResponse> = await axios.post(
-				this.serverUrl + '/upload',
-				formData,
-				{
-					headers: {
-						'api-key': this.apiKey,
-					},
-				}
-			)
-			const UploadResponse = uploadResult.data
-			return UploadResponse
-		} catch (error: any | unknown) {
-			throw new Error(`An error occured during file upload: ${error.message}`)
+			const requestOptions = {
+				method: 'POST',
+				body: formData,
+				headers: {
+					'api-key': this.apiKey,
+				},
+			}
+
+			const response = await fetch(this.serverUrl + '/upload', requestOptions)
+			const uploadResponse = await response.json()
+
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`)
+			}
+
+			return uploadResponse
+		} catch (error) {
+			throw new Error(`An error occurred during file upload: ${error}`)
 		}
 	}
 
 	public async uploadMany({ files }: { files: File[] }) {
-		if (!File) {
+		if (!files) {
 			throw new UF_Error(404)
 		}
 		try {
@@ -47,19 +51,24 @@ export class UploadFast {
 				formData.append('file', file)
 			})
 
-			const uploadResult: ApiResponse<UploadResponse> = await axios.post(
-				this.serverUrl + '/upload',
-				formData,
-				{
-					headers: {
-						'api-key': this.apiKey,
-					},
-				}
-			)
-			const UploadResponse = uploadResult.data
-			return UploadResponse
-		} catch (error: any | unknown) {
-			throw new Error(`An error occured during file upload: ${error.message}`)
+			const requestOptions = {
+				method: 'POST',
+				body: formData,
+				headers: {
+					'api-key': this.apiKey,
+				},
+			}
+
+			const response = await fetch(this.serverUrl + '/upload', requestOptions)
+			const uploadResponse = await response.json()
+
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`)
+			}
+
+			return uploadResponse
+		} catch (error) {
+			throw new Error(`An error occurred during file upload: ${error}`)
 		}
 	}
 }

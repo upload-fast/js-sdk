@@ -22,14 +22,14 @@ describe('JavaScript SDK', () => {
 			type: 'image/png',
 		})
 
-		const file = new File([blob], 'spicymohito.png', {
+		const file = new File([blob], 'spicymohitas.png', {
 			type: 'image/png',
 			lastModified: Date.now(),
 		})
 
 		const response = await uploadfast.upload({ file })
 		// expect(response.status).toBe(201)
-		expect(response[0]?.file_name).toBe('spicymohito.png')
+		expect(response[0]?.file_name).toBe('spicymohitas.png')
 
 		// Capture the URL of the uploaded file for later use
 		// uploadedFileUrl = response?.data?.url as string
