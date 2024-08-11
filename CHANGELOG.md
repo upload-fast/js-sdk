@@ -1,5 +1,11 @@
 # @uploadfast/client
 
+## 0.1.0
+
+### Minor Changes
+
+- Added new method (delete) for deleting files and fixed buggy tests
+
 ## 0.0.14
 
 ### Patch Changes

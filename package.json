@@ -1,6 +1,6 @@
 {
 	"name": "@uploadfast/client",
-	"version": "0.0.15",
+	"version": "0.1.0",
 	"description": "Upload-fast Javascript SDK",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
