@@ -36,7 +36,7 @@ describe('JavaScript SDK', () => {
 	it('should delete the uploaded file and return valid response', async () => {
 		// Use the captured URL of the uploaded file
 		const response = await uploadfast.delete({
-			resource: 'https://assets.uploadfast.dev/spicymohitas.png',
+			resource: uploadedFileUrl,
 		})
 		expect(response?.message).toBeTruthy()
 	})
