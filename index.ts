@@ -34,29 +34,23 @@ export class UploadFast {
 	 */
 
 	public async upload({
-		file,
 		resource,
 	}: {
-		file: File
-		resource?: File[] | undefined
+		resource: File[] | File | undefined
 	}): Promise<UploadResponse> {
-		if (!file) {
-			if (!resource) {
-				throw new UF_Error(404)
-			}
-		}
-
 		try {
+			if (resource instanceof File === false) {
+				throw new Error('Invalid file resource')
+			}
+			
 			const formData = new FormData()
 
-			if (file instanceof File) {
-				formData.append('file', file)
-			}
-
-			if (!file && Array.isArray(resource)) {
+			if (Array.isArray(resource)) {
 				for (const item of resource) {
 					formData.append('file', item)
 				}
+			} else if (resource instanceof File) {
+				formData.append('file', resource)
 			}
 
 			const requestOptions = {
@@ -82,7 +76,7 @@ export class UploadFast {
 
 	/**
 	 * Upload many images at once
-	 * @deprecated
+	 * @deprecated Use the upload
 	 * @param {Object}
 	 * @returns
 	 */

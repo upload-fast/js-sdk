@@ -1,5 +1,20 @@
 # @uploadfast/client
 
+## 0.1.2
+
+### Patch Changes
+- Deprecated file method inside of upload and delete method parameter object, in favor of 'resource'
+  property.
+
+- Instead of file property now use the 'resource' property to reference a single file objects or an
+  array of file object
+
+## 0.1.1
+
+### Maintenance & Improvements
+
+- Added documentation comments
+
 ## 0.1.0
 
 ### Minor Changes

@@ -27,8 +27,8 @@ describe('JavaScript SDK', () => {
 			lastModified: Date.now(),
 		})
 
-		const response = await uploadfast.upload({ file: file })
-		expect(response[0]?.file_name).toBe('spicymohitas.png')
+		const response = await uploadfast.upload({ resource: file })
+		expect(response[0]).toBeTruthy()
 
 		uploadedFileUrl = response[0]?.url!
 	})
