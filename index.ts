@@ -76,7 +76,7 @@ export class UploadFast {
 
 	/**
 	 * Upload many images at once
-	 * @deprecated Use the upload
+	 * @deprecated Use the upload method with the resource parameter.
 	 * @param {Object}
 	 * @returns
 	 */

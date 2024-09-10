@@ -20,4 +20,4 @@ Install with your preferred package manager.
 
 ## Author
 
-- [@iyifr](https://www.github.com/iyifr)
+- [@Uploadfast](https://www.github.com/upload-fast)
