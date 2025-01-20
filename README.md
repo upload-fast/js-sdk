@@ -24,85 +24,85 @@ pnpm add @uploadfast/client
 ## Quick Start
 
 ```typescript
-import { createClient } from '@uploadfast/client'
+import { createClient } from "@uploadfast/client";
 
 // Initialize the client
 const uploadfast = createClient({
- apiKey: 'your_api_key_here',
-})
+  apiKey: "your_api_key_here",
+});
 
 // Upload a single file
-const file = new File(['file content'], 'example.png', { type: 'image/png' })
+const file = new File(["file content"], "example.png", { type: "image/png" });
 try {
- const response = await uploadfast.upload({ resource: file })
-  console.log('Upload successful:', response[0].url)
+  const response = await uploadfast.upload({ resource: file });
+  console.log("Upload successful:", response[0].url);
 } catch (error) {
-  console.error('Upload failed:', error)
+  console.error("Upload failed:", error);
 }
 ```
 
-### API Reference
+## API Reference
 
-#### Initialization
+### Initialization
 
 Create a new UploadFast client instance:
 
 ```typescript
-import { createClient } from '@uploadfast/client'
+import { createClient } from "@uploadfast/client";
 
 const uploadfast = createClient({
- apiKey: process.env.UPLOAD_FAST_API_KEY,
-})
+  apiKey: process.env.UPLOAD_FAST_API_KEY,
+});
 ```
 
-#### File Upload
+### File Upload
 
 Upload a single file or multiple files:
 
 ```typescript
 // Single file upload
-const file = new File(['content'], 'example.png', { type: 'image/png' })
+const file = new File(["content"], "example.png", { type: "image/png" });
 const response = await uploadfast.upload({
- resource: file,
-})
+  resource: file,
+});
 // response type: { file_name: string; file_size: number; url: string; bucket: string; }[]
 
 // Multiple files upload
 const files = [
-	new File(['content1'], 'example1.png', { type: 'image/png' }),
-	new File(['content2'], 'example2.jpg', { type: 'image/jpeg' }),
-]
+  new File(["content1"], "example1.png", { type: "image/png" }),
+  new File(["content2"], "example2.jpg", { type: "image/jpeg" }),
+];
 const response = await uploadfast.upload({
- resource: files,
-})
+  resource: files,
+});
 ```
 
-#### Response Types
+### Response Types
 
 The upload method returns an array of file information:
 
 ```typescript
 type UploadResponse = {
-	file_name: string
-	file_size: number
-	url: string
-	bucket: string
-}[]
+  file_name: string;
+  file_size: number;
+  url: string;
+  bucket: string;
+}[];
 ```
 
-#### Error Handling
+### Error Handling
 
 The SDK provides detailed error messages that you can catch and handle:
 
 ```typescript
 try {
- const response = await uploadfast.upload({ resource: file })
+  const response = await uploadfast.upload({ resource: file });
 } catch (error) {
-	if (error.message.includes('Invalid file resource')) {
-	 console.error('Please provide a valid File object')
-	} else {
-	 console.error('Upload failed:', error.message)
-	}
+  if (error.message.includes("Invalid file resource")) {
+    console.error("Please provide a valid File object");
+  } else {
+    console.error("Upload failed:", error.message);
+  }
 }
 ```
 
