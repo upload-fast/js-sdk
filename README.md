@@ -55,7 +55,7 @@ Create a new UploadFast client instance:
 import { createClient } from '@uploadfast/client'
 
 const uploadfast = createClient({
-	apiKey: 'your_api_key_here',
+	apiKey: process.env.UPLOAD_FAST_API_KEY,
 })
 ```
 
