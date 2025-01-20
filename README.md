@@ -1,4 +1,4 @@
-# UploadFast JS SDK
+## UploadFast JS SDK
 
 A lightweight JavaScript SDK for seamlessly uploading and managing files with
 [UploadFast](https://www.uploadfast.dev).
@@ -28,16 +28,16 @@ import { createClient } from '@uploadfast/client'
 
 // Initialize the client
 const uploadfast = createClient({
-	apiKey: 'your_api_key_here',
+ apiKey: 'your_api_key_here',
 })
 
 // Upload a single file
 const file = new File(['file content'], 'example.png', { type: 'image/png' })
 try {
-	const response = await uploadfast.upload({ resource: file })
-	console.log('Upload successful:', response[0].url)
+ const response = await uploadfast.upload({ resource: file })
+  console.log('Upload successful:', response[0].url)
 } catch (error) {
-	console.error('Upload failed:', error)
+  console.error('Upload failed:', error)
 }
 ```
 
@@ -51,7 +51,7 @@ Create a new UploadFast client instance:
 import { createClient } from '@uploadfast/client'
 
 const uploadfast = createClient({
-	apiKey: process.env.UPLOAD_FAST_API_KEY,
+ apiKey: process.env.UPLOAD_FAST_API_KEY,
 })
 ```
 
@@ -63,7 +63,7 @@ Upload a single file or multiple files:
 // Single file upload
 const file = new File(['content'], 'example.png', { type: 'image/png' })
 const response = await uploadfast.upload({
-	resource: file,
+ resource: file,
 })
 // response type: { file_name: string; file_size: number; url: string; bucket: string; }[]
 
@@ -73,7 +73,7 @@ const files = [
 	new File(['content2'], 'example2.jpg', { type: 'image/jpeg' }),
 ]
 const response = await uploadfast.upload({
-	resource: files,
+ resource: files,
 })
 ```
 
@@ -96,12 +96,12 @@ The SDK provides detailed error messages that you can catch and handle:
 
 ```typescript
 try {
-	const response = await uploadfast.upload({ resource: file })
+ const response = await uploadfast.upload({ resource: file })
 } catch (error) {
 	if (error.message.includes('Invalid file resource')) {
-		console.error('Please provide a valid File object')
+	 console.error('Please provide a valid File object')
 	} else {
-		console.error('Upload failed:', error.message)
+	 console.error('Upload failed:', error.message)
 	}
 }
 ```
