@@ -9,7 +9,10 @@
 	"scripts": {
 		"test": "node index.spec.ts",
 		"build": "tsup index.ts --format cjs,esm --dts",
-		"lint": "tsc"
+		"lint": "tsc",
+		"changeset": "changeset",
+		"version-packages": "changeset version",
+		"publish-packages": "changeset publish"
 	},
 	"keywords": [
 		"Javascript",

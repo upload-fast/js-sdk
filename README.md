@@ -21,10 +21,6 @@ yarn add @uploadfast/client
 pnpm add @uploadfast/client
 ```
 
-## Author
-
-- [@Uploadfast](https://www.github.com/upload-fast)
-
 ## Quick Start
 
 ```typescript
@@ -45,9 +41,9 @@ try {
 }
 ```
 
-## API Reference
+### API Reference
 
-### Initialization
+#### Initialization
 
 Create a new UploadFast client instance:
 
@@ -59,7 +55,7 @@ const uploadfast = createClient({
 })
 ```
 
-### File Upload
+#### File Upload
 
 Upload a single file or multiple files:
 
@@ -81,7 +77,7 @@ const response = await uploadfast.upload({
 })
 ```
 
-### Response Types
+#### Response Types
 
 The upload method returns an array of file information:
 
@@ -94,7 +90,7 @@ type UploadResponse = {
 }[]
 ```
 
-### Error Handling
+#### Error Handling
 
 The SDK provides detailed error messages that you can catch and handle:
 
@@ -109,3 +105,7 @@ try {
 	}
 }
 ```
+
+### Author
+
+- [@Uploadfast](https://www.github.com/upload-fast)
