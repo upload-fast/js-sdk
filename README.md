@@ -76,36 +76,3 @@ const response = await uploadfast.upload({
   resource: files,
 });
 ```
-
-### Response Types
-
-The upload method returns an array of file information:
-
-```typescript
-type UploadResponse = {
-  file_name: string;
-  file_size: number;
-  url: string;
-  bucket: string;
-}[];
-```
-
-### Error Handling
-
-The SDK provides detailed error messages that you can catch and handle:
-
-```typescript
-try {
-  const response = await uploadfast.upload({ resource: file });
-} catch (error) {
-  if (error.message.includes("Invalid file resource")) {
-    console.error("Please provide a valid File object");
-  } else {
-    console.error("Upload failed:", error.message);
-  }
-}
-```
-
-### Author
-
-- [@Uploadfast](https://www.github.com/upload-fast)
