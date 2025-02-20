@@ -41,6 +41,158 @@ try {
 }
 ```
 
+## Framework Examples
+
+### Next.js API Route (App Router)
+
+```typescript
+// app/api/upload/route.ts
+import { createClient } from "@uploadfast/client";
+
+export async function POST(request: Request) {
+  const uploadfast = createClient({
+    apiKey: process.env.UPLOAD_FAST_API_KEY!,
+  });
+
+  try {
+    const formData = await request.formData();
+    const file = formData.get("file") as File;
+
+    if (!file) {
+      return Response.json({ error: "No file provided" }, { status: 400 });
+    }
+
+    const response = await uploadfast.upload({ resource: file });
+    return Response.json(response);
+  } catch (error) {
+    console.error("Upload failed:", error);
+    return Response.json({ error: "Upload failed" }, { status: 500 });
+  }
+}
+```
+
+### Next.js Client Usage
+
+```typescript
+// app/components/FileUpload.tsx
+"use client";
+
+async function handleSubmit(formData: FormData) {
+  try {
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    console.log("Upload successful:", data[0].url);
+  } catch (error) {
+    console.error("Upload failed:", error);
+  }
+}
+
+export function FileUpload() {
+  return (
+    <form action={handleSubmit}>
+      <input type="file" name="file" />
+      <button type="submit">Upload</button>
+    </form>
+  );
+}
+```
+
+### Remix Server Action
+
+```typescript
+// app/routes/upload.tsx
+import { createClient } from "@uploadfast/client";
+import { json, type ActionFunctionArgs } from "@remix-run/node";
+
+export async function action({ request }: ActionFunctionArgs) {
+  const uploadfast = createClient({
+    apiKey: process.env.UPLOAD_FAST_API_KEY!,
+  });
+
+  try {
+    const formData = await request.formData();
+    const file = formData.get("file") as File;
+
+    if (!file) {
+      return json({ error: "No file provided" }, { status: 400 });
+    }
+
+    const response = await uploadfast.upload({ resource: file });
+    return json(response);
+  } catch (error) {
+    console.error("Upload failed:", error);
+    return json({ error: "Upload failed" }, { status: 500 });
+  }
+}
+
+export default function Upload() {
+  return (
+    <Form method="post" encType="multipart/form-data">
+      <input type="file" name="file" />
+      <button type="submit">Upload</button>
+    </Form>
+  );
+}
+```
+
+### Multiple File Upload Example
+
+```typescript
+// app/api/upload/route.ts
+import { createClient } from "@uploadfast/client";
+
+export async function POST(request: Request) {
+  const uploadfast = createClient({
+    apiKey: process.env.UPLOAD_FAST_API_KEY!,
+  });
+
+  try {
+    const formData = await request.formData();
+    const files = formData.getAll("files") as File[];
+
+    if (!files.length) {
+      return Response.json({ error: "No files provided" }, { status: 400 });
+    }
+
+    const response = await uploadfast.upload({ resource: files });
+    return Response.json(response);
+  } catch (error) {
+    console.error("Upload failed:", error);
+    return Response.json({ error: "Upload failed" }, { status: 500 });
+  }
+}
+```
+
+### File Deletion Example
+
+```typescript
+// app/api/delete/route.ts
+import { createClient } from "@uploadfast/client";
+
+export async function DELETE(request: Request) {
+  const uploadfast = createClient({
+    apiKey: process.env.UPLOAD_FAST_API_KEY!,
+  });
+
+  try {
+    const { urls } = await request.json();
+
+    if (!urls || !urls.length) {
+      return Response.json({ error: "No URLs provided" }, { status: 400 });
+    }
+
+    const response = await uploadfast.delete({ resource: urls });
+    return Response.json(response);
+  } catch (error) {
+    console.error("Deletion failed:", error);
+    return Response.json({ error: "Deletion failed" }, { status: 500 });
+  }
+}
+```
+
 ## API Reference
 
 ### Initialization
