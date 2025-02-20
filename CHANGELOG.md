@@ -1,8 +1,15 @@
 # @uploadfast/client
 
+## 1.1.0
+
+### Minor Changes
+
+- Improve test pipline | Add error to built js files | Extended delete method
+
 ## 0.1.2
 
 ### Patch Changes
+
 - Deprecated file method inside of upload and delete method parameter object, in favor of 'resource'
   property.
 
