@@ -1,39 +1,46 @@
 {
-	"name": "@uploadfast/client",
-	"version": "1.0.2",
-	"description": "Upload images to uploadfast in javascript applications.",
-	"main": "dist/index.js",
-	"module": "dist/index.mjs",
-	"types": "dist/index.d.ts",
-	"repository": "https://github.com/upload-fast/js-sdk",
-	"scripts": {
-		"test": "node index.spec.ts",
-		"build": "tsup index.ts --format cjs,esm --dts",
-		"lint": "tsc",
-		"changeset": "changeset",
-		"version-packages": "changeset version",
-		"publish-packages": "changeset publish"
-	},
-	"keywords": [
-		"Javascript",
-		"Typescript",
-		"File Uploads",
-		"UploadFast",
-		"Image Uploads"
-	],
-	"author": {
-		"name": "Upload Fast",
-		"url": "https://uploadfast.dev"
-	},
-	"license": "MIT",
-	"devDependencies": {
-		"@jest/globals": "^29.7.0",
-		"@types/node": "^20.12.8",
-		"jest": "^29.7.0",
-		"ts-jest": "^29.1.2",
-		"typescript": "^5.4.5",
-		"@changesets/cli": "^2.27.1",
-		"tsup": "^8.0.2",
-		"dotenv": "^16.4.5"
-	}
+  "name": "@uploadfast/client",
+  "version": "1.0.2",
+  "description": "Javascript SDK for UploadFast",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/upload-fast/js-sdk",
+  "scripts": {
+    "test": "node bin/test.js",
+    "build": "tsup index.ts error.ts --format cjs,esm --dts",
+    "lint": "tsc",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "publish-packages": "changeset publish"
+  },
+  "keywords": [
+    "Javascript",
+    "Typescript",
+    "File Uploads",
+    "UploadFast",
+    "Image Uploads"
+  ],
+  "author": {
+    "name": "Upload Fast",
+    "url": "https://uploadfast.dev"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@japa/assert": "^4.0.1",
+    "@japa/runner": "^4.1.0",
+    "@jest/globals": "^29.7.0",
+    "@types/node": "^20.12.8",
+    "dotenv": "^16.4.5",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  },
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.7.9"
+  }
 }
