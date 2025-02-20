@@ -4,7 +4,30 @@
 
 ### Minor Changes
 
-- Improve test pipline | Add error to built js files | Extended delete method
+- Migrated test framework from Jest to Japa
+- Added comprehensive test suite for SDK functionality including:
+  - Client creation validation
+  - File upload validation
+  - Single and multiple file upload testing
+  - File deletion validation and testing
+  - Integration tests for upload and delete operations
+
+### Maintenance & Improvements
+
+- Updated development dependencies
+- Improved error handling in test environment
+- Added CI environment support in tests
+- Standardized test response validation
+
+## 1.0.2
+
+### Patch Changes
+
+- Deprecated file method inside of upload and delete method parameter object, in favor of 'resource'
+  property.
+
+- Instead of file property now use the 'resource' property to reference a single file objects or an
+  array of file object
 
 ## 0.1.2
 
